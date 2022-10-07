@@ -1,0 +1,12 @@
+.swiper-pagination {
+  bottom: initial !important;
+  left: initial !important;
+  position: static;
+}
+
+.swiper-pagination-bullet {
+  background: white;
+}
+.swiper-pagination-bullet-active {
+  background: red;
+}
