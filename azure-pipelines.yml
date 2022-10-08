@@ -15,6 +15,11 @@ steps:
     versionSpec: '16.15.0'
   displayName: 'Install Node.js'
 
+- task: npmAuthenticate@0
+  inputs:
+    workingFile: '.npmrc'
+    customEndpoint: 'npmVonsa'
+
 - script: |
     npm install
     npm run test
