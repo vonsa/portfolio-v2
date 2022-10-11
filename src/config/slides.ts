@@ -49,7 +49,7 @@ export const slides: SliderInterface = [
     tags: ["Art", "Photoshop", "Concept art"],
     description:
       "View digital paintings I've done as videogame related conceptual work.",
-    color: "#00ad68",
+    color: "#00801c",
   },
   {
     img: businesscards,

@@ -18,6 +18,6 @@
 
 @media only screen and (max-width: 800px) {
   #radial-gradient {
-    box-shadow: 0 0px 200px 110px var(--main-color, #aa0000);
+    box-shadow: 0 30px 250px 150px var(--main-color, #aa0000);
   }
 }
