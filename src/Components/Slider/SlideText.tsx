@@ -6,6 +6,7 @@ export interface SlideTextInterface {
   description: string;
   website?: string;
   github?: string;
+  color?: string;
 }
 
 /*

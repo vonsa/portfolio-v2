@@ -10,3 +10,14 @@
 .swiper-pagination-bullet-active {
   background: red;
 }
+
+#radial-gradient {
+  box-shadow: 0 0px 300px 170px var(--main-color, #aa0000);
+  transition: all ease-in-out 0.4s;
+}
+
+@media only screen and (max-width: 800px) {
+  #radial-gradient {
+    box-shadow: 0 0px 200px 110px var(--main-color, #aa0000);
+  }
+}

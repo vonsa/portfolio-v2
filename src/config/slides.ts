@@ -9,6 +9,16 @@ import { SliderInterface } from "../Components/Slider/Slider";
 
 export const slides: SliderInterface = [
   {
+    img: githubInsights,
+    website: "https://github-insights.coendewaal.com",
+    github: "https://github.com/vonsa/Github-insights",
+    title: "Github insights",
+    tags: ["Svelte", "GraphQL", "CI/CD", "Sentry", "Telemetry"],
+    description:
+      "Find users on Github and get an overview of their statistics and top contributions.",
+    color: "#0000aa",
+  },
+  {
     img: dragimate,
     website: "https://dragimate.coendewaal.com",
     title: "Dragimate Library",
@@ -22,15 +32,7 @@ export const slides: SliderInterface = [
     ],
     description:
       "This is an easy to use library to utilize mouse drag events to generate CSS transforms on your website.",
-  },
-  {
-    img: githubInsights,
-    website: "https://github-insights.coendewaal.com",
-    github: "https://github.com/vonsa/Github-insights",
-    title: "Github insights",
-    tags: ["Svelte", "GraphQL", "CI/CD", "Sentry", "Telemetry"],
-    description:
-      "Find users on Github and get an overview of their statistics and top contributions.",
+    color: "#8802ad",
   },
   {
     img: vonsawebsite,
@@ -38,6 +40,7 @@ export const slides: SliderInterface = [
     title: "WordPress website",
     tags: ["Design", "WordPress", "CSS"],
     description: "Web development & design agency website. Slightly dated.",
+    color: "#0071bd",
   },
   {
     img: space,
@@ -46,6 +49,7 @@ export const slides: SliderInterface = [
     tags: ["Art", "Photoshop", "Concept art"],
     description:
       "View digital paintings I've done as videogame related conceptual work.",
+    color: "#00ad68",
   },
   {
     img: businesscards,
@@ -53,6 +57,7 @@ export const slides: SliderInterface = [
     tags: ["Design", "Business cards", "Vonsa"],
     description:
       "These business cards have been printed with foil printing technique, elements such as the logo are printed in silver.",
+    color: "#8b00e8",
   },
   {
     img: icons,
@@ -67,5 +72,6 @@ export const slides: SliderInterface = [
     tags: ["Logo", "Design"],
     description:
       "This logo resembles some core elements in the smith's trade. It portrays class and the logo itself can be incorporated as a metal emblem into fence designs.",
+    color: "#4200c7",
   },
 ];

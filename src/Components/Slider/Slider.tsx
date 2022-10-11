@@ -1,4 +1,9 @@
-import { EffectCoverflow, Pagination, Virtual } from "swiper";
+import {
+  EffectCoverflow,
+  Pagination,
+  Virtual,
+  Swiper as SwiperInterface,
+} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -13,26 +18,33 @@ export type SliderInterface = (SlideTextInterface & { img: string })[];
 
 const Slider = ({ slides }: { slides: SliderInterface }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-
-  // const step = 1 / slides.length;
-  // const hiddenAt = step / 2;
+  const [height, setHeight] = useState<number>();
 
   return (
-    <div className="min-h-full w-full" id="swiper-outer-wrapper">
+    <div
+      className="min-h-full w-full relative"
+      id="swiper-outer-wrapper"
+      style={
+        {
+          "--main-color": slides[activeIndex]?.color || "#ff0000",
+        } as React.CSSProperties
+      }
+    >
+      <div
+        className="flex justify-center items-center w-full h-full absolute"
+        style={{ height: `${height}px` }}
+      >
+        <div id="radial-gradient"></div>
+      </div>
       <Swiper
         spaceBetween={20}
         slidesPerView={1}
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.activeIndex);
         }}
-        // onSliderMove={(swiper, event) => {
-        //   const base = step * swiper.realIndex;
-        //   const diff = Math.abs(swiper.progress - base);
-        //   console.log({ base, hiddenAt, diff });
-        //   const opacity = diff / hiddenAt;
-
-        //   console.log({ opacity });
-        // }}
+        onResize={(swiper) => {
+          setHeight(swiper.wrapperEl.clientHeight);
+        }}
         scrollbar={{ draggable: true }}
         grabCursor={true}
         modules={[EffectCoverflow, Pagination, Virtual]}
