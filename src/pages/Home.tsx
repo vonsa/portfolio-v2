@@ -2,11 +2,20 @@ import { start } from "@vonsa/koch-curve";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../Components/UI/Button";
+import { action } from "../events/action";
+import { send } from "../events/eventBus";
 
 const HomePage = () => {
   useEffect(() => {
     start("#fractal-header");
+    send(
+      action({
+        type: "THEME",
+        payload: { navbar: "fixed", colors: "dark" },
+      })
+    );
   }, []);
+
   return (
     <div id="fractal-header">
       <div className="z-4 absolute top-1/2 left-0 w-full flex justify-center">

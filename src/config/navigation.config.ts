@@ -1,4 +1,4 @@
-import { NavigationItem } from "./../Components/Navbar/Navbar";
+import { NavigationItem } from "../Components/Navbar/Navbar";
 
 export const navigationItems: NavigationItem[] = [
   {
@@ -8,5 +8,9 @@ export const navigationItems: NavigationItem[] = [
   {
     label: "Portfolio",
     to: "/portfolio",
+  },
+  {
+    label: "Blog",
+    to: "/blog",
   },
 ];
