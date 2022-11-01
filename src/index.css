@@ -27,12 +27,12 @@ body {
   box-sizing: border-box;
 }
 
-.dark-theme {
+.theme-dark {
   --color-base: #000000;
   --color-highlight: #ffffff;
 }
 
-.light-theme {
+.theme-light {
   --color-base: #ffffff;
   --color-highlight: #000000;
 }

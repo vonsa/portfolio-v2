@@ -8,7 +8,9 @@ const Login = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    login(email, password);
+    login(email, password).then(() => {
+      window.location.href = "/blog/manage";
+    }); // catch error?
   };
 
   return (
@@ -16,6 +18,7 @@ const Login = () => {
       onSubmit={handleSubmit}
       className="flex flex-col justify-center items-center gap-4"
     >
+      <h2 className="text-2xl font-bold">Login</h2>
       <div className="flex gap-2">
         <input
           type="text"

@@ -1,1 +1,4 @@
-export type Action<Type, Payload> = { type: Type; payload: Payload };
+export type Action<Type, Payload = undefined> = {
+  type: Type;
+  payload?: Payload;
+};

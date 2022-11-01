@@ -7,7 +7,7 @@ import { routeConfig } from "./config/routes.config";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Layout } from "./Components/UI/Layout";
 import { navigationItems } from "./config/navigation.config";
-import { Content } from "./Components/UI/Content";
+import LazyFallback from "./pages/LazyFallback";
 
 setAuthHeadersFromStorage();
 
@@ -16,19 +16,30 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
-  <Layout>
-    <BrowserRouter>
-      <Navbar navigationItems={navigationItems} />
-      <Content>
-        <React.Suspense fallback={<>...</>}>
-          <Routes>
-            {routeConfig.map((route) => {
-              return <Route element={<route.component />} path={route.path} />;
-            })}
-          </Routes>
-        </React.Suspense>
-      </Content>
-    </BrowserRouter>
-  </Layout>
+  <BrowserRouter>
+    <Routes>
+      {routeConfig.map((route) => {
+        return (
+          <Route
+            key={route.path}
+            element={
+              <>
+                <Layout>
+                  <Navbar
+                    navigationItems={navigationItems}
+                    config={route.navbarConfig}
+                  />
+                  <React.Suspense fallback={<LazyFallback />}>
+                    <route.component />
+                  </React.Suspense>
+                </Layout>
+              </>
+            }
+            path={route.path}
+          />
+        );
+      })}
+    </Routes>
+  </BrowserRouter>
   // </React.StrictMode>
 );

@@ -1,45 +1,50 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import MenuIcon from "./MenuIcon/MenuIcon";
 import "./navbar.css";
 import { ReactComponent as GithubLogo } from "../../assets/img/icons/github.svg";
 import { ReactComponent as MailLogo } from "../../assets/img/icons/mail.svg";
-import { listen } from "../../events/eventBus";
+import { ThemeColors } from "../../styles/Theme.model";
 
 export interface NavigationItem {
   label: string;
   to: string;
+  end?: true;
 }
 
-export type NavbarType = "fixed" | "static";
+export type NavbarPosition = "fixed" | "static";
+export type NavbarBg = "solid" | "transparent";
+export interface NavbarConfig {
+  position?: NavbarPosition;
+  theme?: ThemeColors;
+  bg?: NavbarBg;
+}
 
 export const Navbar = ({
   navigationItems,
+  config,
 }: {
   navigationItems: NavigationItem[];
+  config?: NavbarConfig;
 }) => {
-  let [position, setPosition] = useState<NavbarType>("fixed");
   let [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const sub = listen("THEME").subscribe(({ navbar }) => setPosition(navbar));
-
-    return () => sub.unsubscribe();
-  }, []);
+  const { position = "static", theme = "dark", bg = "solid" } = config || {};
 
   return (
     <div
-      className="w-screen flex justify-center fixed z-10"
+      className={`w-screen flex justify-center fixed z-10 theme-${theme} ${
+        bg === "solid" ? "bg-primary" : "bg-transparent"
+      } text-primary`}
       style={{ position }}
     >
       <div className="w-full md:max-w-6xl flex justify-between p-6 leading-normal">
         <div className="hidden md:flex">
           {navigationItems.map((item) => {
             return (
-              <span className="mr-6 last:mr-0 text-lg">
+              <span key={item.to} className="mr-6 last:mr-0 text-lg">
                 <NavLink
                   to={item.to}
-                  end
+                  end={item.end}
                   className={({ isActive }) => {
                     return isActive
                       ? "font-bold hover:text-red-100 text-red-700"
@@ -69,7 +74,7 @@ export const Navbar = ({
           <div className="mt-28 text-3xl flex gap-4 flex-col text-black">
             {navigationItems.map((item) => {
               return (
-                <span id="nav-link">
+                <span key={item.to} id="nav-link">
                   <NavLink
                     to={item.to}
                     end

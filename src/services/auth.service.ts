@@ -15,22 +15,21 @@ axios.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 401) {
-      window.location.href = "/blog/login";
+      window.location.href = "/blog/manage/login";
     }
     return Promise.reject(error);
   }
 );
 
 export function login(email: string, password: string) {
-  axios
+  return axios
     .post("http://localhost:8080/login", { email, password })
     .then((response) => {
       const { token, userId } = response.data;
       storeJwt(token);
       localStorage.setItem("userId", userId);
       setAuthHeadersFromStorage();
-    })
-    .catch((err) => console.log({ err }));
+    });
 }
 
 // currently disabled on the backend
