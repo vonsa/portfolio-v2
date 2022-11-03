@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { GenericError } from "../../Components/Errors/GenericError";
 import { BreadCrumb } from "../../Components/UI/BreadCrumb";
 import { ButtonSmall } from "../../Components/UI/ButtonSmall";
 import Spinner from "../../Components/UI/Spinner/Spinner";
@@ -16,9 +17,10 @@ const BlogManagePage = () => {
     switch (true) {
       case !!loading:
         return <Spinner />;
-      case !!error:
-        return <h1>Error</h1>;
       case !!posts: // handle posts.length = 0 case?
+        if (posts.length === 0) {
+          return <h1>No posts available</h1>;
+        }
         return posts.map((post: any) => {
           return (
             <div
@@ -45,7 +47,7 @@ const BlogManagePage = () => {
           );
         });
       default:
-        return <h1>Some error</h1>;
+        return <GenericError />;
     }
   };
 
@@ -58,7 +60,7 @@ const BlogManagePage = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-full">
+    <div className="flex flex-col  items-center h-full">
       <div className="w-full p-6 max-w-6xl flex flex-col gap-3">
         <BreadCrumb></BreadCrumb>
         <div className="flex justify-start w-100">

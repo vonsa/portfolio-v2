@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { GenericError } from "../../Components/Errors/GenericError";
 import Spinner from "../../Components/UI/Spinner/Spinner";
 import { useAsync } from "../../hooks/useAsync";
 import { getPostById } from "../../services/posts.service";
@@ -25,8 +26,6 @@ const BlogPostPage = () => {
     switch (true) {
       case !!loading:
         return <Spinner />;
-      case !!error:
-        return <h1>Error</h1>;
       case !!post:
         return (
           <div>
@@ -36,7 +35,7 @@ const BlogPostPage = () => {
           </div>
         );
       default:
-        return <h1>Some error</h1>;
+        return <GenericError />;
     }
   };
 

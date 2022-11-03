@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // Check how to generate types from backend and type this
-export const getPosts = () => {
-  return axios.get("http://localhost:8080/get");
+export const getPosts = (sort?: string) => {
+  return axios.get("http://localhost:8080/get", { params: { sort } }); // something like sort=createdAt,asc
 };
 
 export const getPostById = (id: string, fields?: string[]) => {

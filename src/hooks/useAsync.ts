@@ -3,14 +3,17 @@ import { useEffect, useState } from "react";
 // Add generic typing
 export const useAsync = (
   promiseThunk: () => Promise<any>,
-  dependencies: any[] = []
+  dependencies: any[] = [],
+  condition: () => boolean = () => true
 ) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<any>(null);
 
   useEffect(() => {
-    execute();
+    if (condition()) {
+      execute();
+    }
   }, dependencies);
 
   function execute() {

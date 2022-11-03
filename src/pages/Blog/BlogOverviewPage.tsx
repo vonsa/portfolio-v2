@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { GenericError } from "../../Components/Errors/GenericError";
 import Spinner from "../../Components/UI/Spinner/Spinner";
 import { useAsync } from "../../hooks/useAsync";
 import { getPosts } from "../../services/posts.service";
@@ -13,8 +14,6 @@ const BlogOverviewPage = () => {
     switch (true) {
       case !!loading:
         return <Spinner />;
-      case !!error:
-        return <h1>Error</h1>;
       case !!posts:
         return posts.map((post: any) => {
           return (
@@ -28,12 +27,12 @@ const BlogOverviewPage = () => {
           );
         });
       default:
-        return <h1>Some error</h1>;
+        return <GenericError />;
     }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-full">
+    <div className="flex flex-col items-center h-full">
       <div className="w-full p-6 max-w-6xl flex flex-col gap-3">
         {renderContent()}
       </div>
