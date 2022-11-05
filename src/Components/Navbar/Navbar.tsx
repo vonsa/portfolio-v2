@@ -58,7 +58,7 @@ export const Navbar = ({
           })}
         </div>
 
-        <div className="md:hidden z-20 pr-6">
+        <div className="md:hidden md:pointer-events-none z-20 pr-6">
           <div
             className={`flex ${mobileMenuOpen ? "text-black" : "text-white"}`}
           >
