@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_BACKEND_HOST;
+
 export function setAuthHeadersFromStorage() {
   axios.defaults.headers.common["Authorization"] = `Bearer ${retrieveJwt()}`;
 }
@@ -23,7 +25,7 @@ axios.interceptors.response.use(
 
 export function login(email: string, password: string) {
   return axios
-    .post("http://localhost:8080/login", { email, password })
+    .post(`${BASE_URL}/login`, { email, password })
     .then((response) => {
       const { token, userId } = response.data;
       storeJwt(token);
@@ -34,7 +36,7 @@ export function login(email: string, password: string) {
 
 // currently disabled on the backend
 export function signup(name: string, email: string, password: string) {
-  fetch("http://localhost:8080/signup", {
+  fetch(`${BASE_URL}/signup`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
