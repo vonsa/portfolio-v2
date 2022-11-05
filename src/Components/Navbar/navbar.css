@@ -7,6 +7,10 @@
     border-radius 0.15s cubic-bezier(0.75, 0.13, 0.9, 0.62), visibility 10s;
 }
 
+#mobile-background:not(.open) {
+  pointer-events: none;
+}
+
 #mobile-background.open {
   visibility: visible;
   height: 100vh;
