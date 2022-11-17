@@ -62,12 +62,14 @@ export const Navbar = ({
         <div className="md:hidden md:pointer-events-none z-20 pr-6">
           <div
             className={`flex ${mobileMenuOpen ? "text-black" : "text-white"}`}
+            data-testid="mobile-menu-button"
           >
             <MenuIcon open={mobileMenuOpen} setOpen={setMobileMenuOpen} />
           </div>
         </div>
         <div
           id="mobile-background"
+          data-testid={"mobile-menu"}
           className={`${
             mobileMenuOpen && "open"
           } pl-8 md:hidden fixed bg-white w-screen h-screen top-0 left-0 touch-none`}
