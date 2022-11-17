@@ -1,7 +1,9 @@
 export const Button = ({
+  submit,
   onClick,
   children,
 }: {
+  submit?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
 }) => {
@@ -9,6 +11,7 @@ export const Button = ({
     <button
       className="p-5 pt-3 pb-3 rounded-3xl border-red-400 border font-bold flex gap-2 text-red-400 hover:bg-red-400 hover:text-white ease-in-out duration-300"
       onClick={onClick}
+      type={submit ? "submit" : "button"}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

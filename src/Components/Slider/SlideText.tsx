@@ -26,6 +26,7 @@ const SlideText = ({
       {slides.map((slide, index) => {
         return (
           <div
+            key={JSON.stringify(slide)}
             className={
               index === currentSlideIndex
                 ? "min-w-full -order-1"
