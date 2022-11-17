@@ -15,6 +15,16 @@ steps:
     versionSpec: '16.15.0'
   displayName: 'Install Node.js'
 
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: '.env.production.local'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: $(Agent.TempDirectory)
+    Contents: '**\.env.production.local'
+    TargetFolder: $(Build.SourcesDirectory)
+
 - task: npmAuthenticate@0
   inputs:
     workingFile: '.npmrc'
