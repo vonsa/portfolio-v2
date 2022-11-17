@@ -104,14 +104,14 @@ export const Navbar = ({
             <GithubLogo
               className="w-7 h-7 md:w-6 md:h-6 hover:scale-125 ease-in-out duration-200"
               fill="white"
-              onClick={() => analyticsEvent({ name: "[navbar] visit github" })}
+              onClick={() => analyticsEvent({ name: "Visit GitHub" })}
             ></GithubLogo>
           </a>
           <a href="mailto:waaldecoen@outlook.com">
             <MailLogo
               className="w-7 h-7 md:w-6 md:h-6 hover:scale-125 ease-in-out duration-200"
               fill="white"
-              onClick={() => analyticsEvent({ name: "[navbar] send email" })}
+              onClick={() => analyticsEvent({ name: "Send email" })}
             ></MailLogo>
           </a>
         </div>

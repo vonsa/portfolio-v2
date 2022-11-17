@@ -45,7 +45,7 @@ const SlideText = ({
                       <ButtonResponsive
                         onClick={() =>
                           analyticsEvent({
-                            name: "[slide] visit website",
+                            name: "Click slide website button",
                             props: { url: slide.website },
                           })
                         }
@@ -59,7 +59,7 @@ const SlideText = ({
                       <ButtonResponsive
                         onClick={() =>
                           analyticsEvent({
-                            name: "[slide] visit github",
+                            name: "Click slide GitHub button",
                             props: { url: slide.github },
                           })
                         }

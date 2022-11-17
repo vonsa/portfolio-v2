@@ -21,6 +21,7 @@ export type SliderInterface = SlideInterface[];
 const Slider = ({ slides }: { slides: SliderInterface }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [height, setHeight] = useState<number>();
+  const [hasSwiped, setHasSwiped] = useState<boolean>(false);
 
   return (
     <div
@@ -43,10 +44,12 @@ const Slider = ({ slides }: { slides: SliderInterface }) => {
         slidesPerView={1}
         onReachEnd={() => analyticsEvent({ name: "[slider] reached end" })}
         onSlideChange={(swiper) => {
-          analyticsEvent({
-            name: "[slider] slide changed",
-            props: { from: activeIndex, to: swiper.activeIndex },
-          });
+          if (!hasSwiped) {
+            analyticsEvent({
+              name: "Use portfolio slider",
+            });
+            setHasSwiped(true);
+          }
           setActiveIndex(swiper.activeIndex);
         }}
         onResize={(swiper) => {
