@@ -1,7 +1,6 @@
 import { NavbarConfig } from "./../Components/Navbar/Navbar";
 import React from "react";
-import { NavbarPosition } from "../Components/Navbar/Navbar";
-import { ThemeColors } from "../styles/Theme.model";
+// import { blogRoutesConfig } from "./blog.routes.config";
 
 const HomePage = React.lazy(() =>
   import("../pages/Home").then((res) => {
@@ -10,13 +9,6 @@ const HomePage = React.lazy(() =>
   })
 );
 const PortfolioPage = React.lazy(() => import("../pages/Portfolio/Portfolio"));
-const BlogManagePage = React.lazy(() => import("../pages/Blog/BlogManagePage"));
-const BlogEditorPage = React.lazy(() => import("../pages/Blog/BlogEditorPage"));
-const BlogLoginPage = React.lazy(() => import("../pages/Blog/BlogLoginPage"));
-const BlogOverviewPage = React.lazy(
-  () => import("../pages/Blog/BlogOverviewPage")
-);
-const BlogPostPage = React.lazy(() => import("../pages/Blog/BlogPostPage"));
 
 interface RouteConfig {
   component: React.LazyExoticComponent<() => JSX.Element>;
@@ -24,6 +16,7 @@ interface RouteConfig {
   navbarConfig?: NavbarConfig;
 }
 
+// TODO: check if navigation should stem from this config
 export const routeConfig: RouteConfig[] = [
   {
     component: HomePage,
@@ -38,24 +31,5 @@ export const routeConfig: RouteConfig[] = [
       bg: "transparent",
     },
   },
-  {
-    component: BlogOverviewPage,
-    path: "/blog",
-  },
-  {
-    component: BlogManagePage,
-    path: "/blog/manage",
-  },
-  {
-    component: BlogEditorPage,
-    path: "/blog/manage/create",
-  },
-  {
-    component: BlogLoginPage,
-    path: "/blog/manage/login",
-  },
-  {
-    component: BlogPostPage,
-    path: "/blog/post",
-  },
+  // ...blogRoutesConfig
 ];
