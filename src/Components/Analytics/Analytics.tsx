@@ -10,7 +10,7 @@ const Analytics = ({
   children: React.ReactNode;
 }) => {
   useScript({
-    src: "https://plausible.io/js/script.hash.outbound-links.js",
+    src: "https://plausible.io/js/script.outbound-links.local.js",
     defer: "true",
     "data-domain": dataDomain,
   });
