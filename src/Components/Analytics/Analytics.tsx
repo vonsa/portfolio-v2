@@ -1,12 +1,6 @@
 import useScript from "../../hooks/useScript";
 
-const Analytics = ({
-  dataDomain,
-  children,
-}: {
-  dataDomain: string;
-  children: React.ReactNode;
-}) => {
+const Analytics = ({ dataDomain }: { dataDomain: string }) => {
   useScript({
     src: "https://plausible.io/js/script.local.js",
     defer: "true",
@@ -20,7 +14,7 @@ const Analytics = ({
   }`,
   });
 
-  return <>{children}</>;
+  return <></>;
 };
 
 export default Analytics;

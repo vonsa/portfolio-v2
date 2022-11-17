@@ -11,14 +11,11 @@ import ConditionalWrapper from "./Components/Hoc/ConditionalWrapper";
 
 export const createApp = () => (
   // <React.StrictMode>
-  <ConditionalWrapper
-    condition={!!process.env.REACT_APP_ANALYTICS_DATA_DOMAIN}
-    wrapper={(children) => (
-      <Analytics dataDomain={process.env.REACT_APP_ANALYTICS_DATA_DOMAIN!}>
-        {children}
-      </Analytics>
+
+  <>
+    {process.env.REACT_APP_ANALYTICS_DATA_DOMAIN && (
+      <Analytics dataDomain={process.env.REACT_APP_ANALYTICS_DATA_DOMAIN} />
     )}
-  >
     <BrowserRouter>
       <Routes>
         {routeConfig.map((route) => {
@@ -44,6 +41,6 @@ export const createApp = () => (
         })}
       </Routes>
     </BrowserRouter>
-  </ConditionalWrapper>
+  </>
   // </React.StrictMode>
 );
