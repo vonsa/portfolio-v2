@@ -13,6 +13,7 @@ import "./slider.css";
 import { useState } from "react";
 import SlideImage from "./SlideImage";
 import SlideText, { SlideTextInterface } from "./SlideText";
+import { analyticsEvent } from "../../services/analytics/analytics.service";
 
 export type SlideInterface = SlideTextInterface & { img: string };
 export type SliderInterface = SlideInterface[];
@@ -40,7 +41,12 @@ const Slider = ({ slides }: { slides: SliderInterface }) => {
       <Swiper
         spaceBetween={20}
         slidesPerView={1}
+        onReachEnd={() => analyticsEvent({ name: "[slider] reached end" })}
         onSlideChange={(swiper) => {
+          analyticsEvent({
+            name: "[slider] slide changed",
+            props: { from: activeIndex, to: swiper.activeIndex },
+          });
           setActiveIndex(swiper.activeIndex);
         }}
         onResize={(swiper) => {

@@ -5,6 +5,7 @@ import "./navbar.css";
 import { ReactComponent as GithubLogo } from "../../assets/img/icons/github.svg";
 import { ReactComponent as MailLogo } from "../../assets/img/icons/mail.svg";
 import { ThemeColors } from "../../styles/Theme.model";
+import { analyticsEvent } from "../../services/analytics/analytics.service";
 
 export interface NavigationItem {
   label: string;
@@ -101,12 +102,14 @@ export const Navbar = ({
             <GithubLogo
               className="w-7 h-7 md:w-6 md:h-6 hover:scale-125 ease-in-out duration-200"
               fill="white"
+              onClick={() => analyticsEvent({ name: "[navbar] visit github" })}
             ></GithubLogo>
           </a>
-          <a href="mailto:administratie@vonsa.nl">
+          <a href="mailto:waaldecoen@outlook.com">
             <MailLogo
               className="w-7 h-7 md:w-6 md:h-6 hover:scale-125 ease-in-out duration-200"
               fill="white"
+              onClick={() => analyticsEvent({ name: "[navbar] send email" })}
             ></MailLogo>
           </a>
         </div>

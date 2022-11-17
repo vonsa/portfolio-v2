@@ -1,4 +1,5 @@
 import { ButtonResponsive } from "../UI/ButtonResponsive";
+import { analyticsEvent } from "../../services/analytics/analytics.service";
 
 export interface SlideTextInterface {
   tags: string[];
@@ -41,12 +42,30 @@ const SlideText = ({
                 <div className="flex justify-center flex-wrap gap-2">
                   {slide.website && (
                     <a href={slide.website} target="_blank" rel="noreferrer">
-                      <ButtonResponsive>Website</ButtonResponsive>
+                      <ButtonResponsive
+                        onClick={() =>
+                          analyticsEvent({
+                            name: "[slide] visit website",
+                            props: { url: slide.website },
+                          })
+                        }
+                      >
+                        Website
+                      </ButtonResponsive>
                     </a>
                   )}
                   {slide.github && (
                     <a href={slide.github} target="_blank" rel="noreferrer">
-                      <ButtonResponsive>GitHub</ButtonResponsive>
+                      <ButtonResponsive
+                        onClick={() =>
+                          analyticsEvent({
+                            name: "[slide] visit github",
+                            props: { url: slide.github },
+                          })
+                        }
+                      >
+                        GitHub
+                      </ButtonResponsive>
                     </a>
                   )}
                 </div>

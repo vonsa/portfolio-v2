@@ -1,7 +1,5 @@
 import useScript from "../../hooks/useScript";
 
-// src="https://plausible.io/js/script.js"
-
 const Analytics = ({
   dataDomain,
   children,
@@ -10,7 +8,7 @@ const Analytics = ({
   children: React.ReactNode;
 }) => {
   useScript({
-    src: "https://plausible.io/js/script.outbound-links.local.js",
+    src: "https://plausible.io/js/script.local.js",
     defer: "true",
     "data-domain": dataDomain,
   });
