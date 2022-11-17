@@ -42,7 +42,7 @@ const Slider = ({ slides }: { slides: SliderInterface }) => {
       <Swiper
         spaceBetween={20}
         slidesPerView={1}
-        onReachEnd={() => analyticsEvent({ name: "[slider] reached end" })}
+        onReachEnd={() => analyticsEvent({ name: "Finished portfolio slider" })}
         onSlideChange={(swiper) => {
           if (!hasSwiped) {
             analyticsEvent({
