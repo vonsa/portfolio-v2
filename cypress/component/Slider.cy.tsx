@@ -1,5 +1,5 @@
 import Slider, { SlideInterface } from "../../src/Components/Slider/Slider";
-import { slides } from "../../src/config/slides";
+import { slides } from "../../src/config/slides.config";
 
 beforeEach(() => {
   cy.mount(<Slider slides={slides}></Slider>);
