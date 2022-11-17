@@ -14,7 +14,8 @@ import { useState } from "react";
 import SlideImage from "./SlideImage";
 import SlideText, { SlideTextInterface } from "./SlideText";
 
-export type SliderInterface = (SlideTextInterface & { img: string })[];
+export type SlideInterface = SlideTextInterface & { img: string };
+export type SliderInterface = SlideInterface[];
 
 const Slider = ({ slides }: { slides: SliderInterface }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
