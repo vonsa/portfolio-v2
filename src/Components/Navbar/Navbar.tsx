@@ -4,6 +4,7 @@ import MenuIcon from "./MenuIcon/MenuIcon";
 import "./navbar.css";
 import { ReactComponent as GithubLogo } from "../../assets/img/icons/github.svg";
 import { ReactComponent as MailLogo } from "../../assets/img/icons/mail.svg";
+import { ReactComponent as LinkedinLogo } from "../../assets/img/icons/linkedin.svg";
 import { ThemeColors } from "../../styles/Theme.model";
 import { analyticsEvent } from "../../services/analytics/analytics.service";
 
@@ -96,6 +97,17 @@ export const Navbar = ({
           </div>
         </div>
         <div className="flex gap-5">
+          <a
+            href="https://www.linkedin.com/in/coen-de-waal/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedinLogo
+              className="w-7 h-7 md:w-6 md:h-6 hover:scale-125 ease-in-out duration-200"
+              fill="white"
+              onClick={() => analyticsEvent({ name: "Visit Linkedin" })}
+            ></LinkedinLogo>
+          </a>
           <a
             href="https://github.com/vonsa"
             target="_blank"
