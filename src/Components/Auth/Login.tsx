@@ -8,7 +8,7 @@ const Login = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    login(email, password).then((res) => {
+    login({ email, password }).then((res) => {
       window.location.href = "/blog/manage";
     }); // catch error?
   };

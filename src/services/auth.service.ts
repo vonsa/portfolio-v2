@@ -1,4 +1,5 @@
 import axios from "axios";
+import { LoginParams, LoginResponse } from "./auth.service.model";
 
 const BASE_URL = process.env.REACT_APP_BACKEND_HOST;
 
@@ -24,9 +25,9 @@ axios.interceptors.response.use(
   }
 );
 
-export function login(email: string, password: string) {
+export function login(params: LoginParams) {
   return axios
-    .post(`${BASE_URL}/login`, { email, password })
+    .post<LoginResponse>(`${BASE_URL}/login`, params)
     .then((response) => {
       const { token, userId } = response.data;
       storeJwt(token);

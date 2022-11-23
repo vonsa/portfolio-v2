@@ -8,17 +8,59 @@
       "name": "Coen de Waal",
       "url": "https://coendewaal.com"
     },
-    "servers": [
-      "https://coen-de-waal-blog.herokuapp.com"
-    ]
+    "servers": ["https://coen-de-waal-blog.herokuapp.com"]
   },
   "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["token", "userId"],
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "description": "The JWT token"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "description": "The user id"
+                    }
+                  },
+                  "example": {
+                    "userId": "637a5729124f04fe645a8199",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndhYWxkZWNvZW5Ab3V0bG9vay5jb20iLCJ1c2VySWQiOiI2MzUyYTJlZTBlYzk2YWJiMjkzYzBjYmMiLCJpYXQiOjE2NjkwNTU0MDUsImV4cCI6MTY2OTA1OTAwOP0.A6ZIFQMu_A8-ALKLEFoppVg1_eniid_lk3kiqM8aff0"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
     "/get": {
       "get": {
         "summary": "Get all posts",
-        "tags": [
-          "Posts"
-        ],
+        "tags": ["Posts"],
         "parameters": [
           {
             "in": "query",
@@ -60,9 +102,7 @@
     "/get/{id}": {
       "get": {
         "summary": "Get post by id",
-        "tags": [
-          "Posts"
-        ],
+        "tags": ["Posts"],
         "parameters": [
           {
             "in": "path",
@@ -102,9 +142,7 @@
     "/create": {
       "post": {
         "summary": "Create a post",
-        "tags": [
-          "Posts"
-        ],
+        "tags": ["Posts"],
         "requestBody": {
           "required": true,
           "content": {
@@ -149,9 +187,7 @@
     "/update/{id}": {
       "put": {
         "summary": "Update a post",
-        "tags": [
-          "Posts"
-        ],
+        "tags": ["Posts"],
         "parameters": [
           {
             "in": "path",
@@ -188,12 +224,7 @@
     "schemas": {
       "PostBody": {
         "type": "object",
-        "required": [
-          "title",
-          "html",
-          "delta",
-          "text"
-        ],
+        "required": ["title", "html", "delta", "text"],
         "properties": {
           "title": {
             "type": "string",
@@ -247,10 +278,7 @@
       },
       "PostMeta": {
         "type": "object",
-        "required": [
-          "createdAt",
-          "updatedAt"
-        ],
+        "required": ["createdAt", "updatedAt"],
         "properties": {
           "createdAt": {
             "type": "string",
@@ -270,9 +298,7 @@
       },
       "PostId": {
         "type": "object",
-        "required": [
-          "id"
-        ],
+        "required": ["id"],
         "properties": {
           "id": {
             "type": "string",
@@ -293,6 +319,69 @@
           },
           {
             "$ref": "#/components/schemas/PostMeta"
+          }
+        ]
+      },
+      "UserBody": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email of the user."
+          },
+          "password": {
+            "type": "string",
+            "description": "The password of the user."
+          }
+        },
+        "example": {
+          "email": "waaldecoen@outlook.com",
+          "password": 1234
+        }
+      },
+      "UserMeta": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date the user was created."
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date the user was updated."
+          }
+        },
+        "example": {
+          "createdAt": "2022-11-20T16:34:49.816+00:00",
+          "updatedAt": "2022-11-20T16:34:49.816+00:00"
+        }
+      },
+      "UserId": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The auto-generated id of the user"
+          }
+        },
+        "example": {
+          "id": "637a5729124f04fe645a8199"
+        }
+      },
+      "User": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/UserId"
+          },
+          {
+            "$ref": "#/components/schemas/UserBody"
+          },
+          {
+            "$ref": "#/components/schemas/UserMeta"
           }
         ]
       }

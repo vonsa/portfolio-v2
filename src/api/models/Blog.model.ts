@@ -4,6 +4,30 @@
  */
 
 export interface paths {
+  "/login": {
+    post: {
+      responses: {
+        /** A successful response */
+        200: {
+          content: {
+            "application/json": {
+              /** @description The JWT token */
+              token: string;
+              /** @description The user id */
+              userId: string;
+            };
+          };
+        };
+        /** Bad request */
+        401: unknown;
+      };
+      requestBody: {
+        content: {
+          "application/json": components["schemas"]["UserBody"];
+        };
+      };
+    };
+  };
   "/get": {
     get: {
       parameters: {
@@ -166,6 +190,48 @@ export interface components {
     Post: components["schemas"]["PostId"] &
       components["schemas"]["PostBody"] &
       components["schemas"]["PostMeta"];
+    /**
+     * @example {
+     *   "email": "waaldecoen@outlook.com",
+     *   "password": 1234
+     * }
+     */
+    UserBody: {
+      /** @description The email of the user. */
+      email: string;
+      /** @description The password of the user. */
+      password: string;
+    };
+    /**
+     * @example {
+     *   "createdAt": "2022-11-20T16:34:49.816+00:00",
+     *   "updatedAt": "2022-11-20T16:34:49.816+00:00"
+     * }
+     */
+    UserMeta: {
+      /**
+       * Format: date-time
+       * @description The date the user was created.
+       */
+      createdAt?: string;
+      /**
+       * Format: date-time
+       * @description The date the user was updated.
+       */
+      updatedAt?: string;
+    };
+    /**
+     * @example {
+     *   "id": "637a5729124f04fe645a8199"
+     * }
+     */
+    UserId: {
+      /** @description The auto-generated id of the user */
+      id: string;
+    };
+    User: components["schemas"]["UserId"] &
+      components["schemas"]["UserBody"] &
+      components["schemas"]["UserMeta"];
   };
 }
 
