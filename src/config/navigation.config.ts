@@ -11,8 +11,8 @@ export const navigationItems: NavigationItem[] = [
     to: "/portfolio",
     end: true,
   },
-  {
-    label: "Blog",
-    to: "/blog",
-  },
+  // {
+  //   label: "Blog",
+  //   to: "/blog",
+  // },
 ];

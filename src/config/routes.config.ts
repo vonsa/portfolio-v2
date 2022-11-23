@@ -1,6 +1,6 @@
 import { NavbarConfig } from "./../Components/Navbar/Navbar";
 import React from "react";
-import { blogRoutesConfig } from "./blog.routes.config";
+// import { blogRoutesConfig } from "./blog.routes.config";
 
 const HomePage = React.lazy(() =>
   import("../pages/Home").then((res) => {
@@ -31,5 +31,5 @@ export const routeConfig: RouteConfig[] = [
       bg: "transparent",
     },
   },
-  ...blogRoutesConfig,
+  // ...blogRoutesConfig,
 ];
