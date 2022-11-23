@@ -6,7 +6,7 @@ export const substring = (str: string, charCount: number) => {
   }
 };
 
-export const readableDate = (timestampMs: number) => {
+export const readableDate = (timestampMs: string) => {
   return new Date(timestampMs).toLocaleDateString(undefined, {
     weekday: "long",
     year: "numeric",

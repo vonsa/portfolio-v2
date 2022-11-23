@@ -15,7 +15,7 @@ const BlogOverviewPage = () => {
       case !!loading:
         return <Spinner />;
       case !!posts:
-        return posts.map((post: any) => {
+        return posts!.map((post: any) => {
           return (
             <Link key={post._id} to="/blog/post" state={{ postId: post._id }}>
               <div className="flex flex-col gap-3 p-4 border-b border-solid border-red-500">

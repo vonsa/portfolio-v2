@@ -1,0 +1,302 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Blog API",
+    "version": "1.0.0",
+    "description": "Blog API Information",
+    "contact": {
+      "name": "Coen de Waal",
+      "url": "https://coendewaal.com"
+    },
+    "servers": [
+      "https://coen-de-waal-blog.herokuapp.com"
+    ]
+  },
+  "paths": {
+    "/get": {
+      "get": {
+        "summary": "Get all posts",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The sort criteria"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The fields to return"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of posts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/get/{id}": {
+      "get": {
+        "summary": "Get post by id",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The post id"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The fields to return"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A post",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/create": {
+      "post": {
+        "summary": "Create a post",
+        "tags": [
+          "Posts"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Post created"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/delete/{id}": {
+      "delete": {
+        "description": "Use to delete a post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The post id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response"
+          }
+        }
+      }
+    },
+    "/update/{id}": {
+      "put": {
+        "summary": "Update a post",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The post id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Post updated"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PostBody": {
+        "type": "object",
+        "required": [
+          "title",
+          "html",
+          "delta",
+          "text"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The title of the post"
+          },
+          "html": {
+            "type": "string",
+            "description": "The html of the post"
+          },
+          "delta": {
+            "type": "object",
+            "description": "The delta of the post",
+            "properties": {
+              "ops": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "insert": {},
+                    "delete": {
+                      "type": "number"
+                    },
+                    "retain": {
+                      "type": "number"
+                    },
+                    "attributes": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "text": {
+            "type": "string",
+            "description": "The text of the post"
+          }
+        },
+        "example": {
+          "title": "Blog Post",
+          "html": "<p>This is a blog post</p>",
+          "delta": {
+            "ops": [
+              {
+                "insert": "Post delta"
+              }
+            ]
+          },
+          "text": "This is a blog post"
+        }
+      },
+      "PostMeta": {
+        "type": "object",
+        "required": [
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time the post was created"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time the post was updated"
+          }
+        },
+        "example": {
+          "createdAt": "2022-11-20T16:34:49.816+00:00",
+          "updatedAt": "2022-11-20T16:34:49.816+00:00"
+        }
+      },
+      "PostId": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The auto-generated id of the post"
+          }
+        },
+        "example": {
+          "id": "637a5729124f04fe645a8199"
+        }
+      },
+      "Post": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PostId"
+          },
+          {
+            "$ref": "#/components/schemas/PostBody"
+          },
+          {
+            "$ref": "#/components/schemas/PostMeta"
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}

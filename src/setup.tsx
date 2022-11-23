@@ -7,7 +7,9 @@ import { Layout } from "./Components/UI/Layout";
 import LazyFallback from "./pages/LazyFallback";
 import { navigationItems } from "./config/navigation.config";
 import Analytics from "./Components/Analytics/Analytics";
-import ConditionalWrapper from "./Components/Hoc/ConditionalWrapper";
+import { setAuthHeadersFromStorage } from "./services/auth.service";
+
+setAuthHeadersFromStorage();
 
 export const createApp = () => (
   // <React.StrictMode>

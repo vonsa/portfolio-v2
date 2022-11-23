@@ -17,6 +17,7 @@ axios.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 401) {
+      // TODO: only redirect if not doing a login request
       window.location.href = "/blog/manage/login";
     }
     return Promise.reject(error);

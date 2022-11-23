@@ -13,12 +13,9 @@ const BlogPostPage = () => {
 
   const [loading, error, post] = useAsync(
     () =>
-      getPostById(postId, [
-        "title",
-        "html",
-        "createdAt",
-        "lastModifiedAt",
-      ]).then((res) => res.data),
+      getPostById(postId, {
+        fields: "title,html,createdAt,lastModifiedAt",
+      }).then((res) => res.data),
     [postId]
   );
 
@@ -29,9 +26,9 @@ const BlogPostPage = () => {
       case !!post:
         return (
           <div>
-            <h1 className="text-3xl font-bold">{post.title}</h1>
-            <p className="mb-4">Created on {readableDate(post.createdAt)}</p>
-            <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+            <h1 className="text-3xl font-bold">{post!.title}</h1>
+            <p className="mb-4">Created on {readableDate(post!.createdAt)}</p>
+            <div dangerouslySetInnerHTML={{ __html: post!.html }}></div>
           </div>
         );
       default:

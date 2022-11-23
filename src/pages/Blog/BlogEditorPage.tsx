@@ -4,7 +4,11 @@ import "react-quill/dist/quill.snow.css";
 import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { Button } from "../../Components/UI/Button";
-import { getPostById, savePost } from "../../services/posts.service";
+import {
+  getPostById,
+  createPost,
+  updatePost,
+} from "../../services/posts.service";
 import { BreadCrumb } from "../../Components/UI/BreadCrumb";
 import { useAsync } from "../../hooks/useAsync";
 import Spinner from "../../Components/UI/Spinner/Spinner";
@@ -46,7 +50,7 @@ const BlogEditorPage = () => {
             ></input>
             <ReactQuill
               ref={quillEditor}
-              defaultValue={storedPost.delta}
+              defaultValue={storedPost?.delta as ReactQuill.Value}
               modules={modules}
               theme="snow"
               className="flex flex-col"
@@ -68,8 +72,13 @@ const BlogEditorPage = () => {
     const delta = quill.getContents();
     const text = quill.getText();
     const id = postId;
+    const post = { title, html, delta, text };
 
-    savePost({ html, delta, text, title, id });
+    if (id) {
+      updatePost(id, post);
+    } else {
+      createPost(post);
+    }
 
     // Show success or error notification
   };

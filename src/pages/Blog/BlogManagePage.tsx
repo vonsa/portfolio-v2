@@ -18,10 +18,10 @@ const BlogManagePage = () => {
       case !!loading:
         return <Spinner />;
       case !!posts: // handle posts.length = 0 case?
-        if (posts.length === 0) {
+        if (posts!.length === 0) {
           return <h1>No posts available</h1>;
         }
-        return posts.map((post: any) => {
+        return posts!.map((post: any) => {
           return (
             <div
               key={post._id}
@@ -51,7 +51,7 @@ const BlogManagePage = () => {
     }
   };
 
-  const onClickDelete = (id: number) => {
+  const onClickDelete = (id: string) => {
     deletePost(id)
       .then(fetchPosts)
       .catch((err) => {
