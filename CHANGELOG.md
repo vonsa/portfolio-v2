@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://ssh.dev.azure.com///compare/v1.0.1...v1.1.0) (2022-11-24)
+
+
+### Features
+
+* added a new slide to the portfolio slider ([d6fc5a8](https://ssh.dev.azure.com///commit/d6fc5a85ba53a1a852b9b6603728c2d08c63355e))
+
 ### [1.0.1](https://ssh.dev.azure.com///compare/v1.0.0...v1.0.1) (2022-11-24)
 
 ## 1.0.0 (2022-11-24)
