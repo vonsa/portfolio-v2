@@ -29,3 +29,7 @@ You can use tailwind utility classes anywhere in the project, tree shaking is us
 
 Component unit testing: Cypress
 e2e testing: Cypress
+
+## Libs
+
+The @vonsa/koch-curve dependency is a side project published to the npm registry.
