@@ -5,9 +5,26 @@ import icons from "../../../assets/img/portfolio/icons.jpg";
 import space from "../../../assets/img/portfolio/space.jpg";
 import logo from "../../../assets/img/portfolio/logo.jpg";
 import githubInsights from "../../../assets/img/portfolio/github-insights.png";
+import portfolio from "../../../assets/img/portfolio/portfolio.png";
 import { SliderInterface } from "../components/PortfolioSlider/PortfolioSlider";
 
 export const slides: SliderInterface = [
+  {
+    img: portfolio,
+    github: "https://github.com/vonsa/portfolio-v2",
+    title: "Portfolio",
+    tags: [
+      "React",
+      "Typescript",
+      "tailwindcss",
+      "Cypress",
+      "Code generation",
+      "Creative coding",
+    ],
+    description:
+      "I created a custom fractal animation for the homepage using math and the koch curve algorithm. I also created an express/mongoose backend to write and show blog posts, this feature is under construction in the frontend and can be viewed on the GitHub repository.",
+    color: "#ff0000",
+  },
   {
     img: githubInsights,
     website: "https://github-insights.coendewaal.com",
