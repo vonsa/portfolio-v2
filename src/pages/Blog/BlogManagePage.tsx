@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import { GenericError } from "../../Components/Errors/GenericError";
-import { BreadCrumb } from "../../Components/UI/BreadCrumb";
-import { ButtonSmall } from "../../Components/UI/ButtonSmall";
-import Spinner from "../../Components/UI/Spinner/Spinner";
+import { BreadCrumb } from "../../Components/BreadCrumb";
+import { ButtonSmall } from "../../Components/ButtonSmall";
+import { GenericError } from "../../Components/GenericError";
+import Spinner from "../../Components/Spinner/Spinner";
+import {
+  deletePost,
+  getPosts,
+} from "../../features/posts/services/posts.service";
 import { useAsync } from "../../hooks/useAsync";
-
-import { deletePost, getPosts } from "../../services/posts.service";
 import { readableDate } from "../../utilities/text";
 
 const BlogManagePage = () => {

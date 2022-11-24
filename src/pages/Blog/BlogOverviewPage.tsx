@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { GenericError } from "../../Components/Errors/GenericError";
-import Spinner from "../../Components/UI/Spinner/Spinner";
+import { GenericError } from "../../Components/GenericError";
+import Spinner from "../../Components/Spinner/Spinner";
+import { getPosts } from "../../features/posts/services/posts.service";
 import { useAsync } from "../../hooks/useAsync";
-import { getPosts } from "../../services/posts.service";
 import { readableDate, substring } from "../../utilities/text";
 
 const BlogOverviewPage = () => {

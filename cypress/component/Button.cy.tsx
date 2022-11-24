@@ -1,4 +1,4 @@
-import { Button } from "../../src/Components/UI/Button";
+import { Button } from "../../src/Components/Button";
 
 describe("Button.cy.ts", () => {
   it("calls onClick on click", () => {

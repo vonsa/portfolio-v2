@@ -1,5 +1,5 @@
-import Login from "../../Components/Auth/Login";
-import { ThemedPage } from "../../Components/UI/ThemedPage";
+import Login from "../../features/auth/components/Login";
+import { ThemedPage } from "../../features/theming/components/ThemedPage";
 
 const BlogLoginPage = () => {
   return (

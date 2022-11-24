@@ -1,13 +1,13 @@
 import "./index.css";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Navbar } from "./Components/Navbar/Navbar";
-import { routeConfig } from "./config/routes.config";
-import { Layout } from "./Components/UI/Layout";
-import LazyFallback from "./pages/LazyFallback";
-import { navigationItems } from "./config/navigation.config";
-import Analytics from "./Components/Analytics/Analytics";
-import { setAuthHeadersFromStorage } from "./services/auth.service";
+import { Navbar } from "./features/navigation/components/Navbar/Navbar";
+import LazyFallback from "./Components/LazyFallback";
+import { navigationItems } from "./features/navigation/config/navigation.config";
+import { setAuthHeadersFromStorage } from "./features/auth/services/auth.service";
+import Analytics from "./features/analytics/components/Analytics";
+import { routeConfig } from "./features/routes/config/routes.config";
+import { Layout } from "./Components/Layout";
 
 setAuthHeadersFromStorage();
 

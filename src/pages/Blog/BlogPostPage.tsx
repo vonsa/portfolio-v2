@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
-import { GenericError } from "../../Components/Errors/GenericError";
-import Spinner from "../../Components/UI/Spinner/Spinner";
+import { GenericError } from "../../Components/GenericError";
+import Spinner from "../../Components/Spinner/Spinner";
+import { getPostById } from "../../features/posts/services/posts.service";
 import { useAsync } from "../../hooks/useAsync";
-import { getPostById } from "../../services/posts.service";
 import { readableDate } from "../../utilities/text";
 
 // Can also use React suspense: https://blog.openreplay.com/data-fetching-with-suspense-in-react/

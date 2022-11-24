@@ -3,16 +3,17 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { Button } from "../../Components/UI/Button";
-import {
-  getPostById,
-  createPost,
-  updatePost,
-} from "../../services/posts.service";
-import { BreadCrumb } from "../../Components/UI/BreadCrumb";
+
 import { useAsync } from "../../hooks/useAsync";
-import Spinner from "../../Components/UI/Spinner/Spinner";
-import { GenericError } from "../../Components/Errors/GenericError";
+import Spinner from "../../Components/Spinner/Spinner";
+import { GenericError } from "../../Components/GenericError";
+import {
+  createPost,
+  getPostById,
+  updatePost,
+} from "../../features/posts/services/posts.service";
+import { BreadCrumb } from "../../Components/BreadCrumb";
+import { Button } from "../../Components/Button";
 
 const BlogEditorPage = () => {
   const quillEditor = useRef<ReactQuill>(null);

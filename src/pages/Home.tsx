@@ -1,8 +1,8 @@
 import { start } from "@vonsa/koch-curve";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../Components/UI/Button";
-import { ThemedPage } from "../Components/UI/ThemedPage";
+import { Button } from "../Components/Button";
+import { ThemedPage } from "../features/theming/components/ThemedPage";
 
 const HomePage = () => {
   useEffect(() => {
