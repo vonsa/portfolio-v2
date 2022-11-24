@@ -4,7 +4,7 @@ import Spinner from "./Spinner/Spinner";
 const LazyFallback = () => {
   return (
     <ThemedPage theme="dark">
-      <div className="flex justify-center items-center">
+      <div className="min-h-full flex justify-center items-center">
         <Spinner />
       </div>
     </ThemedPage>
