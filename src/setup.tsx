@@ -12,9 +12,7 @@ import { Layout } from "./Components/Layout";
 setAuthHeadersFromStorage();
 
 export const createApp = () => (
-  // <React.StrictMode>
-
-  <>
+  <React.StrictMode>
     {process.env.REACT_APP_ANALYTICS_DATA_DOMAIN && (
       <Analytics dataDomain={process.env.REACT_APP_ANALYTICS_DATA_DOMAIN} />
     )}
@@ -43,6 +41,5 @@ export const createApp = () => (
         })}
       </Routes>
     </BrowserRouter>
-  </>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
